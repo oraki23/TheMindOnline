@@ -2,62 +2,23 @@ module.exports = class Game{
     constructor(numberOfPlayers){
         this.cards = [];
 
-        this.numberOfPlayers = numberOfPlayers;
-
-        this.numbreOfHitler = 1;
-
-        if(numberOfPlayers == 5){
-            this.numbrerOfFacists = 1;
-            this.numberOfLiberals = 3;
-        } else if(numberOfPlayers == 6){
-            this.numbrerOfFacists = 1;
-            this.numberOfLiberals = 4;
-        } else if(numberOfPlayers == 7){
-            this.numbrerOfFacists = 2;
-            this.numberOfLiberals = 4;
-        } else if(numberOfPlayers == 8){
-            this.numbrerOfFacists = 2;
-            this.numberOfLiberals = 5;
-        } else if(numberOfPlayers == 9){
-            this.numbrerOfFacists = 3;
-            this.numberOfLiberals = 5;
-        } else if(numberOfPlayers == 10){
-            this.numbrerOfFacists = 3;
-            this.numberOfLiberals = 6;
+        for(var i = 1; i <= 100; i++){
+            this.cards.push(i);
         }
 
-        this.generateHitlerCard();
-        this.generateFacistCards();
-        this.generateLiberalCards();
+        this.numberOfPlayers = numberOfPlayers;
 
-        this.cards = this.shuffle(this.cards);
+        this.level = 1;
 
-        this.president = '';
-        this.chancelor = '';
+        if(this.numberOfPlayers == 2){
+            this.maxLevels = 12;
+            this.numberOfShuriken = 3;
+        } else if(this.numberOfPlayers == 3){
+            this.maxLevels = 10;
+        } else if(this.numberOfPlayers == 4){
+            this.maxLevels = 8;
+        }
 
-        this.policiesNotDrawn = [
-            'Facist',
-            'Facist',
-            'Facist',
-            'Facist',
-            'Facist',
-            'Facist',
-            'Facist',
-            'Facist',
-            'Facist',
-            'Facist',
-            'Facist',
-            'Liberal',
-            'Liberal',
-            'Liberal',
-            'Liberal',
-            'Liberal',
-            'Liberal'
-        ];
-        this.policiesDrawn = [];
-        this.policiesPlayed = [];
-
-        this.policiesInHand = [];
 
         this.shuffleDeck();
     }
